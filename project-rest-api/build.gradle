@@ -13,6 +13,11 @@ java {
 	}
 }
 
+// 🔧 DODANE - żeby przekazywać nazwy parametrów do bytecode'u (fix @PathVariable issue)
+tasks.withType(JavaCompile).configureEach {
+	options.compilerArgs << "-parameters"
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -21,6 +26,10 @@ configurations {
 
 repositories {
 	mavenCentral()
+}
+
+springBoot {
+	mainClass = 'com.project.ProjectRestApiApplication'
 }
 
 dependencies {
@@ -35,6 +44,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
+	implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.1'
 }
 
 tasks.named('test') {

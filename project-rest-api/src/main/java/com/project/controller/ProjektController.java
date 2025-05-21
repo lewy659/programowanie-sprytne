@@ -1,5 +1,6 @@
 package com.project.controller;
 
+
 import com.project.model.Projekt;
 import com.project.service.ProjektService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ import java.util.Optional;
 @RequestMapping("/api/projekty")
 public class ProjektController {
 
+	
+
+
     private final ProjektService projektService;
 
     @Autowired
@@ -28,10 +32,14 @@ public class ProjektController {
     }
 
     @GetMapping("/{projektId}")
-    public ResponseEntity<Projekt> getProjekt(@PathVariable Integer projektId) {
+    public ResponseEntity<Projekt> getProjekt(@PathVariable("projektId") Integer projektId)
+
+    {
         Optional<Projekt> projekt = projektService.getProjekt(projektId);
         return projekt.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
+    
 
     @PostMapping
     public ResponseEntity<Projekt> createProjekt(@RequestBody Projekt projekt) {

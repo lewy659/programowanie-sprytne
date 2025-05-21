@@ -19,6 +19,13 @@ public class Student {
 
     @Column(unique = true, length = 10)
     private String nrIndeksu;
+    
+    @Column(nullable = false)
+    private String password;
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+
 
     @ManyToMany(mappedBy = "studenci")
     private Set<Projekt> projekty;
