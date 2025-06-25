@@ -7,10 +7,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List; // Dodaj ten import
 import java.util.Optional;
 
-@Service
-public class ProjektServiceImpl implements ProjektService {
+@Service // Oznacza, że to jest komponent serwisu Springa
+public class ProjektServiceImpl implements ProjektService { // Implementuje interfejs ProjektService
 
     private final ProjektRepository projektRepository;
 
@@ -37,5 +38,19 @@ public class ProjektServiceImpl implements ProjektService {
     @Override
     public Page<Projekt> getProjekty(Pageable pageable) {
         return projektRepository.findAll(pageable);
+    }
+
+    // Dodano brakującą implementację metody getAllProjekty()
+    @Override
+    public List<Projekt> getAllProjekty() {
+        return projektRepository.findAll();
+    }
+
+    @Override
+    public List<Projekt> getProjektyByStudentId(Integer studentId) {
+        // Zakładamy, że masz metodę w ProjektRepository do znajdowania projektów po ID studenta
+        // Jeśli nie, musisz ją dodać do ProjektRepository:
+        // List<Projekt> findByStudenci_StudentId(Integer studentId);
+        return projektRepository.findByStudenci_StudentId(studentId);
     }
 }
