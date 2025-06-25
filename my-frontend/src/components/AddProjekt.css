@@ -1,0 +1,117 @@
+/* src/components/AddProjekt/AddProjekt.css */
+
+/* Ogólne ustawienia dla kontenera strony */
+.add-projekt {
+  padding: 20px;
+  background-color: var(--main-bg); /* Używamy zmiennej z Layout.css */
+  min-height: calc(100vh - 80px); /* Dopasuj wysokość do reszty layoutu */
+}
+
+/* Nagłówek strony */
+.add-projekt h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-top: 0; /* Usunąć margines z góry, bo Layout już ma padding */
+  margin-bottom: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--primary-color); /* Używamy zmiennej z Layout.css */
+  width: 50%;
+  max-width: 500px; /* Ograniczenie szerokości nagłówka */
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+}
+
+/* Styl formularza */
+.add-projekt form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px; /* Maksymalna szerokość formularza */
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Większy cień */
+}
+
+/* Sekcje z polami formularza */
+.add-projekt form div {
+  margin-bottom: 20px;
+}
+
+/* Etykiety pól */
+.add-projekt label {
+  font-size: 1.1rem;
+  margin-bottom: 8px; /* Większy margines dla lepszej czytelności */
+  color: #555;
+  display: block; /* Upewnij się, że etykieta jest w osobnej linii */
+  font-weight: 600;
+}
+
+/* Pola tekstowe i textarea */
+.add-projekt input,
+.add-projekt textarea {
+  width: calc(100% - 22px); /* Zmniejsz szerokość o padding i border */
+  padding: 12px; /* Większy padding */
+  font-size: 1rem;
+  border: 1px solid #ddd; /* Jaśniejsza ramka */
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  resize: vertical; /* Pozwól użytkownikowi zmieniać rozmiar textarea pionowo */
+  min-height: 80px; /* Minimalna wysokość dla textarea */
+}
+
+.add-projekt input:focus,
+.add-projekt textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.3); /* Subtelny cień na focusie */
+}
+
+/* Przycisk wysyłania */
+.add-projekt button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 25px;
+  align-self: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.add-projekt button[type="submit"]:hover {
+  background-color: #2b6cb0; /* Ciemniejszy odcień primary-color */
+  transform: translateY(-2px); /* Delikatne podniesienie */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Komunikaty o błędach/sukcesie */
+.add-projekt .success-message {
+  text-align: center;
+  color: green;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  background-color: #e6ffed;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #38a169;
+}
+
+.add-projekt .error-message {
+  text-align: center;
+  color: red;
+  font-size: 1.2rem;
+  margin-top: 20px;
+  background-color: #fff5f5;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e53e3e;
+}

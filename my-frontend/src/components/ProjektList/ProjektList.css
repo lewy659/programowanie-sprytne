@@ -1,0 +1,269 @@
+/* src/components/ProjektList/ProjektList.css */
+
+/* Zmienne globalne z Layout.css, jeśli nie są dostępne globalnie */
+:root {
+  --primary-color: #3182ce;
+  --secondary-bg: #edf2f7; /* Jasnoszary */
+  --text-color-light: #4a5568;
+  --border-color-light: #e2e8f0;
+}
+
+/* Kontener całej strony listy projektów */
+.projekt-list-page {
+  padding: 40px; /* Dodatkowe paddingi dla estetyki */
+}
+
+/* Nagłówek strony */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color-light);
+  padding-bottom: 15px;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  color: #2d3748;
+  font-weight: 700;
+  margin: 0;
+}
+
+.add-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Odstęp między ikoną a tekstem */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-button:hover {
+  background-color: #2b6cb0;
+  transform: translateY(-2px);
+}
+
+.add-button svg {
+  font-size: 1.1rem;
+}
+
+/* Siatka projektów */
+.projekt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  padding-top: 20px;
+}
+
+/* Karta projektu */
+.projekt-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+}
+
+.projekt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.projekt-card h3 {
+  font-size: 1.4rem;
+  color: #2d3748;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.projekt-card p {
+  font-size: 0.95rem;
+  color: var(--text-color-light);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  flex-grow: 1; /* Opis zajmuje dostępną przestrzeń */
+}
+
+.projekt-card .card-date {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: auto; /* Przesuwa datę na dół karty */
+}
+
+/* Skeleton Loader */
+.projekt-card.skeleton {
+  background-color: var(--secondary-bg);
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* Komunikaty o błędach i braku wyników */
+.error-message, .no-results {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #e53e3e; /* Czerwony dla błędu */
+  background-color: #fff5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 30px;
+  border: 1px solid #e53e3e;
+}
+
+.no-results {
+    color: #718096; /* Szary dla braku wyników */
+    background-color: #edf2f7;
+    border: 1px solid #e2e8f0;
+    grid-column: 1 / -1; /* Rozciąga się na całą szerokość siatki */
+}
+
+
+/* --- Nowe style dla panelu filtrowania i sortowania --- */
+.filter-sort-panel {
+  display: flex;
+  flex-wrap: wrap; /* Zawijanie elementów na mniejszych ekranach */
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  align-items: center;
+}
+
+.filter-group, .sort-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-group .icon, .sort-group .icon {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.filter-input, .sort-select {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color-light);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-color-light);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+.filter-input:focus, .sort-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+  outline: none;
+}
+
+.sort-select {
+  appearance: none; /* Ukrywa domyślną strzałkę */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%234a5568" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>'); /* Własna strzałka */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 35px; /* Miejsce na strzałkę */
+}
+
+.sort-order-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.sort-order-button:hover {
+  background-color: #2b6cb0;
+}
+
+.sort-order-button svg {
+  font-size: 1.1rem;
+}
+
+/* Media Queries dla responsywności */
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-title {
+    margin-bottom: 15px;
+  }
+
+  .filter-sort-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group, .sort-group {
+    width: 100%;
+  }
+
+  .filter-input, .sort-select {
+    width: 100%;
+  }
+
+  .projekt-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Stylowanie paginacji --- */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  gap: 15px;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.pagination-controls button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:disabled {
+  background-color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #2b6cb0;
+}

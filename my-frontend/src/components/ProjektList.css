@@ -1,0 +1,200 @@
+/* Używamy tych samych zmiennych co w Login.css dla spójności */
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --background-color: #f4f7fa; /* Lżejsze tło dla treści */
+  --container-bg-color: #ffffff;
+  --text-color: #333;
+  --text-secondary-color: #6c757d;
+  --border-color: #e9ecef;
+  --error-color: #d32f2f;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --box-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Główny kontener strony --- */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: var(--background-color);
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Nagłówek strony --- */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 20px;
+}
+
+.page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.add-button {
+  padding: 12px 24px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-button:hover {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+/* --- Siatka z kafelkami projektów --- */
+.projekt-grid {
+  display: grid;
+  /* Tworzy responsywne kolumny: min. 300px szerokości, auto-dopasowanie */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* --- Stylizacja kafelka (karty) projektu --- */
+.projekt-card {
+  background-color: var(--container-bg-color);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.projekt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.projekt-card:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: var(--text-secondary-color);
+  line-height: 1.6;
+  flex-grow: 1; /* Sprawia, że opis wypełnia dostępną przestrzeń */
+  margin-bottom: 0;
+}
+
+/* --- Komunikaty o stanie (błąd, brak projektów) --- */
+.error-message {
+  color: var(--error-color);
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(211, 47, 47, 0.05);
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  border-radius: var(--border-radius);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: var(--container-bg-color);
+  border-radius: var(--border-radius);
+  border: 1px dashed var(--border-color);
+}
+.empty-state h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+.empty-state p {
+  color: var(--text-secondary-color);
+  margin-bottom: 30px;
+}
+
+/* --- Skeleton Loader --- */
+.skeleton {
+  cursor: default;
+  pointer-events: none;
+}
+
+.skeleton .skeleton-text {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  color: transparent; /* Ukrywa tekst, gdyby przypadkiem się pojawił */
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 70%;
+  margin-bottom: 15px;
+}
+
+.skeleton-desc {
+  height: 40px; /* Dwie linie tekstu */
+  width: 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+  font-size: 1rem;
+}
+
+.pagination button {
+  padding: 10px 16px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.pagination button:hover:enabled {
+  background-color: var(--primary-hover-color);
+}
+
+.pagination button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

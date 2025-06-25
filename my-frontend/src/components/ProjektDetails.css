@@ -1,0 +1,115 @@
+/* Plik: ProjektDetails.css */
+
+:root {
+  --primary-color: #007bff;
+  --background-color: #f4f7fa;
+  --container-bg-color: #ffffff;
+  --text-color: #333;
+  --text-secondary-color: #6c757d;
+  --border-color: #e9ecef;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Ogólny layout i nagłówek */
+.page-container { max-width: 1400px; margin: 0 auto; padding: 40px; }
+.projekt-title-header { margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
+.projekt-title-header h1 { font-size: 2.5rem; font-weight: 700; color: var(--text-color); margin: 0 0 10px 0; }
+.projekt-title-header p { font-size: 1.1rem; color: var(--text-secondary-color); max-width: 80ch; }
+.error-container { text-align: center; padding: 50px; font-size: 1.2rem; color: var(--text-secondary-color); }
+
+/* Dwukolumnowa siatka */
+.details-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+@media (max-width: 992px) { .details-layout { grid-template-columns: 1fr; } }
+.main-content, .sidebar { display: flex; flex-direction: column; gap: 30px; }
+
+/* Karta */
+.details-card { background: var(--container-bg-color); border-radius: var(--border-radius); box-shadow: var(--box-shadow); padding: 25px; border: 1px solid var(--border-color); }
+.card-header { display: flex; align-items: center; gap: 10px; font-size: 1.4rem; margin: 0 0 20px 0; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); color: var(--text-color); }
+
+/* Lista wewnątrz karty */
+.item-list { list-style: none; padding: 0; margin: 0; }
+.item-list li { padding: 12px 5px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; transition: background-color 0.2s; }
+.item-list li:last-child { border-bottom: none; }
+.item-list li:hover { background-color: #f9f9f9; }
+.empty-list-info { color: var(--text-secondary-color); padding: 20px 0; text-align: center; }
+
+/* Formularz dodawania */
+.add-item-form { display: flex; gap: 10px; margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 20px; }
+.add-item-form input { flex-grow: 1; padding: 10px 15px; border: 1px solid var(--border-color); border-radius: var(--border-radius); font-size: 1rem; }
+.add-item-form button { flex-shrink: 0; width: 44px; height: 44px; background-color: var(--primary-color); color: white; border: none; border-radius: 50%; cursor: pointer; display: grid; place-items: center; font-size: 1.2rem; transition: all 0.2s; }
+.add-item-form button:hover:not(:disabled) { opacity: 0.85; }
+.add-item-form button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+/* Wyszukiwarka studentów */
+.search-wrapper { position: relative; margin-bottom: 20px; }
+.search-wrapper .search-icon { position: absolute; top: 50%; left: 15px; transform: translateY(-50%); color: var(--text-secondary-color); }
+.search-wrapper input { width: 100%; padding: 12px 15px 12px 40px; border: 1px solid var(--border-color); border-radius: var(--border-radius); font-size: 1rem; }
+.suggestions-list { position: absolute; top: 105%; left: 0; right: 0; background: white; border: 1px solid var(--border-color); border-radius: var(--border-radius); box-shadow: var(--box-shadow); max-height: 200px; overflow-y: auto; z-index: 100; list-style: none; padding: 5px 0; }
+.suggestions-list li { padding: 10px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.suggestions-list li:hover { background-color: var(--primary-color); color: white; }
+
+/* Skeleton & Spinner */
+.skeleton { opacity: 0.7; animation: shimmer 2s infinite linear; background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%); background-size: 1000px 100%; }
+.skeleton-title { height: 30px; margin-bottom: 15px; border-radius: 4px; width: 50%; }
+.skeleton-title.large { height: 40px; width: 60%; }
+.skeleton-text { height: 20px; margin-bottom: 10px; border-radius: 4px; }
+.skeleton-list-item { height: 45px; margin-top: 5px; border-radius: 4px; }
+.skeleton-card { background: var(--container-bg-color) !important; padding: 25px; }
+
+.spinner { width: 20px; height: 20px; border: 3px solid rgba(255, 255, 255, 0.3); border-radius: 50%; border-top-color: #fff; animation: spin 1s ease-in-out infinite; }
+.spinner.small { width: 16px; height: 16px; border-width: 2px; border-top-color: var(--primary-color); border-left-color: transparent; border-right-color: transparent; border-bottom-color: transparent; }
+.search-wrapper .spinner.small { position: absolute; top: 50%; right: 15px; transform: translateY(-50%); }
+
+@keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+.assign-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  padding: 4px;
+  margin-left: 10px;
+}
+
+.item-list select {
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+}
+
+.assigned-info {
+  font-size: 0.85rem;
+  color: var(--text-secondary-color);
+  margin-top: 3px;
+}
+.edit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  align-self: flex-start; /* jeśli przycisk jest w flex containerze */
+}
+
+.edit-btn:hover:not(:disabled) {
+  background-color: #0056b3; /* trochę ciemniejszy odcień primary */
+  box-shadow: 0 6px 14px rgba(0, 123, 255, 0.4);
+}
+
+.edit-btn:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
