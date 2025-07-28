@@ -10,13 +10,9 @@ public class ChatMessage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // ZMIANA: Zmieniono nazwę pola z "message" na "content",
-    // ale nazwa kolumny w bazie danych pozostaje "message".
     @Column(name = "message")
     private String content;
 
-    // ZMIANA: Zmieniono nazwę pola z "senderName" na "sender",
-    // ale nazwa kolumny w bazie danych pozostaje "sender_name".
     @Column(name = "sender_name")
     private String sender;
 

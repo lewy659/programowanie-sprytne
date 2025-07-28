@@ -12,11 +12,10 @@ public interface ProjektService {
     Projekt saveProjekt(Projekt projekt);
     void deleteProjekt(Integer projektId);
 
-    // Ta metoda jest nadal obecna, choć główny endpoint GET już jej nie używa.
-    // Może być używana przez inne, paginowane zapytania, jeśli takie istnieją.
+    
     Page<Projekt> getProjekty(Pageable pageable);
 
-    // NOWA METODA: Pobieranie WSZYSTKICH projektów
+    //  Pobieranie WSZYSTKICH projektów
     List<Projekt> getAllProjekty();
 
     // Metoda pobierania projektów dla danego studenta

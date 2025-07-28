@@ -11,7 +11,7 @@ public class ChatServiceImpl implements ChatService {
 
     private final ChatMessageRepository chatMessageRepository;
 
-    // Spring automatycznie wstryskuje (dostarcza) nam ChatMessageRepository
+    // Spring automatycznie dostarcza nam ChatMessageRepository
     public ChatServiceImpl(ChatMessageRepository chatMessageRepository) {
         this.chatMessageRepository = chatMessageRepository;
     }

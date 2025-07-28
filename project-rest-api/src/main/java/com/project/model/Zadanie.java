@@ -22,7 +22,7 @@ public class Zadanie {
 
     @ManyToOne
     @JoinColumn(name = "student_id")  // Klucz obcy do studenta
-    @JsonIgnoreProperties({"projekty"}) // Możesz dodać więcej, zależnie od cykli
+    @JsonIgnoreProperties({"projekty"}) 
     private Student student;
 
     @Column(nullable = false)

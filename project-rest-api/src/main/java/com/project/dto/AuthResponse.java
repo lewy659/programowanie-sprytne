@@ -1,4 +1,3 @@
-// src/main/java/com/project/dto/AuthResponse.java
 package com.project.dto;
 
 public class AuthResponse {

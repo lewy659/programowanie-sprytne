@@ -19,9 +19,8 @@ public class JwtService {
     private long jwtExpirationMs;
 
     private SecretKey getSigningKey() {
-        // Dla prostych haseł testowych, rozszerzamy klucz do minimalnego bezpiecznego rozmiaru
         byte[] keyBytes = jwtSecret.getBytes();
-        byte[] paddedKeyBytes = new byte[32]; // 256 bitów
+        byte[] paddedKeyBytes = new byte[32]; 
         System.arraycopy(keyBytes, 0, paddedKeyBytes, 0, Math.min(keyBytes.length, paddedKeyBytes.length));
         return Keys.hmacShaKeyFor(paddedKeyBytes);
     }

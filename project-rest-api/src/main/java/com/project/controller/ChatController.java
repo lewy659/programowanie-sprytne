@@ -39,7 +39,6 @@ public class ChatController {
 
         if (principal != null) {
             String nrIndeksu = principal.getName();
-            // Używamy orElse(null) dla bezpieczeństwa, jeśli studenta nie znaleziono
             Student student = studentService.getStudentByNrIndeksu(nrIndeksu).orElse(null);
 
             if (student != null) {
@@ -48,13 +47,9 @@ public class ChatController {
             }
         }
 
-        // ZMIANA: Używamy setSender() zamiast setSenderName()
         chatMessage.setSender(senderName);
         chatMessage.setSenderId(senderId);
         
-        // ZMIANA: Nie ma potrzeby ponownego ustawiania treści wiadomości.
-        // Spring automatycznie zmapował pole "content" z JSONa na obiekt chatMessage.
-        // Usunięto: chatMessage.setMessage(chatMessage.getMessage());
 
         chatMessage.setTimestamp(LocalDateTime.now().format(formatter));
 

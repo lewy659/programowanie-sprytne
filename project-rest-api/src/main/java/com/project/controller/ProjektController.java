@@ -27,10 +27,9 @@ public class ProjektController {
         this.studentRepository = studentRepository;
     }
 
-    // Zmodyfikowana metoda: zwraca List<Projekt> i nie przyjmuje Pageable
     @GetMapping
     public List<Projekt> getProjekty() {
-        return projektService.getAllProjekty(); // Wywołuje nową metodę w serwisie
+        return projektService.getAllProjekty(); 
     }
 
     @GetMapping("/{projektId}")

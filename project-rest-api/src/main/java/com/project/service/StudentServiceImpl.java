@@ -36,9 +36,7 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.findByImieContainingIgnoreCase(imie);
     }
 
-    // Zmieniono: Opakowanie wyniku z repozytorium w Optional,
-    // aby dopasować sygnaturę metody serwisu.
-    // Metoda findByNrIndeksu w repozytorium zwraca Student (lub null).
+    
     @Override
     public Optional<Student> getStudentByNrIndeksu(String nrIndeksu) {
         return Optional.ofNullable(studentRepository.findByNrIndeksu(nrIndeksu));

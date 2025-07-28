@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import java.util.List; // Dodaj ten import
 import java.util.Optional;
 
-@Service // Oznacza, że to jest komponent serwisu Springa
-public class ProjektServiceImpl implements ProjektService { // Implementuje interfejs ProjektService
+@Service 
+public class ProjektServiceImpl implements ProjektService { 
 
     private final ProjektRepository projektRepository;
 
@@ -40,7 +40,6 @@ public class ProjektServiceImpl implements ProjektService { // Implementuje inte
         return projektRepository.findAll(pageable);
     }
 
-    // Dodano brakującą implementację metody getAllProjekty()
     @Override
     public List<Projekt> getAllProjekty() {
         return projektRepository.findAll();
@@ -48,9 +47,7 @@ public class ProjektServiceImpl implements ProjektService { // Implementuje inte
 
     @Override
     public List<Projekt> getProjektyByStudentId(Integer studentId) {
-        // Zakładamy, że masz metodę w ProjektRepository do znajdowania projektów po ID studenta
-        // Jeśli nie, musisz ją dodać do ProjektRepository:
-        // List<Projekt> findByStudenci_StudentId(Integer studentId);
+       
         return projektRepository.findByStudenci_StudentId(studentId);
     }
 }
