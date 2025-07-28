@@ -11,6 +11,5 @@ root.render(
   </React.StrictMode>
 );
 
-// Jeśli chcesz mierzyć wydajność swojej aplikacji, prześlij funkcję do logowania wyników (np. reportWebVitals(console.log))
-// lub wyślij dane do endpointu analitycznego.
+
 reportWebVitals();

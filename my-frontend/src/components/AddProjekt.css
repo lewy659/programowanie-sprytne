@@ -1,4 +1,3 @@
-/* src/components/AddProjekt/AddProjekt.css */
 
 /* Ogólne ustawienia dla kontenera strony */
 .add-projekt {
@@ -12,12 +11,12 @@
   text-align: center;
   color: #333;
   font-size: 2rem;
-  margin-top: 0; /* Usunąć margines z góry, bo Layout już ma padding */
+  margin-top: 0; 
   margin-bottom: 20px;
   font-weight: bold;
-  border-bottom: 2px solid var(--primary-color); /* Używamy zmiennej z Layout.css */
+  border-bottom: 2px solid var(--primary-color); 
   width: 50%;
-  max-width: 500px; /* Ograniczenie szerokości nagłówka */
+  max-width: 500px; 
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 10px;
@@ -28,7 +27,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px; /* Maksymalna szerokość formularza */
+  max-width: 600px; 
   margin-left: auto;
   margin-right: auto;
   background-color: white;
@@ -37,7 +36,6 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Większy cień */
 }
 
-/* Sekcje z polami formularza */
 .add-projekt form div {
   margin-bottom: 20px;
 }
@@ -93,7 +91,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Komunikaty o błędach/sukcesie */
+
 .add-projekt .success-message {
   text-align: center;
   color: green;

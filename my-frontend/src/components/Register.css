@@ -1,7 +1,4 @@
-/* src/components/Register/Register.css */
 
-/* Dziedziczymy zmienne zdefiniowane w Login.css lub globalnych stylach */
-/* Jeśli nie masz globalnych stylów, możesz tu zdefiniować te zmienne ponownie */
 :root {
   --primary-color: #007bff;
   --primary-hover-color: #0056b3;
@@ -16,7 +13,6 @@
   --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Ogólny kontener, pasujący do stylu logowania */
 .register-wrapper {
   display: flex;
   justify-content: center;
@@ -27,7 +23,6 @@
   padding: 20px;
 }
 
-/* Kontener formularza rejestracji */
 .register-container {
   background: var(--container-bg-color);
   padding: 40px;

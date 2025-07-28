@@ -1,4 +1,3 @@
-// AuthContext.js
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
@@ -8,7 +7,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token); // ustawia true jeśli token istnieje
+    setIsLoggedIn(!!token); 
   }, []);
 
   const login = (token) => {

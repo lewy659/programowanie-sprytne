@@ -1,31 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../Auth/AuthContext'; 
-import { Link, useNavigate } from 'react-router-dom'; // Importuj useNavigate
-import { FaPlus, FaSortAlphaDown, FaSortAlphaUp, FaFilter } from 'react-icons/fa'; // Importuj ikony
-import '../ProjektList/ProjektList.css'; // Zmień import CSS na wspólny plik
+import { Link, useNavigate } from 'react-router-dom'; 
+import { FaPlus, FaSortAlphaDown, FaSortAlphaUp, FaFilter } from 'react-icons/fa';
+import '../ProjektList/ProjektList.css'; 
 
-const SkeletonCard = () => <div className="projekt-card skeleton"></div>; // Użyj tej samej karty szkieletowej
+const SkeletonCard = () => <div className="projekt-card skeleton"></div>; 
 
 const TeamProjectsPage = () => {
   const { studentId, isLoggedIn } = useAuth();
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Użyj useNavigate
+  const navigate = useNavigate(); 
 
-  // --- Nowe stany dla filtrowania i sortowania, skopiowane z ProjektListPage ---
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortBy, setSortBy] = useState('nazwa'); // 'nazwa', 'dataUtworzenia'
-  const [sortOrder, setSortOrder] = useState('asc'); // 'asc', 'desc'
-  // --- Koniec nowych stanów ---
+  const [sortBy, setSortBy] = useState('nazwa'); 
+  const [sortOrder, setSortOrder] = useState('asc'); 
 
   useEffect(() => {
     const fetchTeamProjects = async () => {
-      // Wczesne wyjście, jeśli użytkownik nie jest zalogowany lub brak studentId
       if (!isLoggedIn || !studentId) {
         setError("Użytkownik nie jest zalogowany lub brak ID studenta.");
         setIsLoading(false);
-        // Opcjonalnie przekieruj na stronę logowania, jeśli nie ma studentId
         navigate('/login'); 
         return;
       }
@@ -80,11 +76,10 @@ const TeamProjectsPage = () => {
     };
 
     fetchTeamProjects();
-  }, [studentId, isLoggedIn, navigate]); // Dodaj navigate do zależności
+  }, [studentId, isLoggedIn, navigate]); 
 
-  // --- Logika filtrowania i sortowania (skopiowana z ProjektListPage) ---
-  // To jest potrzebne, aby filtrowanie i sortowanie działało na liście projektów studenta
-  const filteredAndSortedProjects = React.useMemo(() => { // Użyj useMemo
+  
+  const filteredAndSortedProjects = React.useMemo(() => { 
     let currentProjects = [...projects]; 
 
     // 1. Filtrowanie
@@ -111,9 +106,7 @@ const TeamProjectsPage = () => {
 
     return currentProjects;
   }, [projects, searchTerm, sortBy, sortOrder]);
-  // --- Koniec logiki filtrowania i sortowania ---
 
-  // Funkcja przełączająca kierunek sortowania
   const toggleSortOrder = () => {
     setSortOrder(prevOrder => (prevOrder === 'asc' ? 'desc' : 'asc'));
   };
@@ -131,18 +124,15 @@ const TeamProjectsPage = () => {
   }
 
   if (error) {
-    return <div className="error-message">{error}</div>; // Użyj klasy error-message
+    return <div className="error-message">{error}</div>;
   }
 
   return (
     <div className="projekt-list-page">
       <div className="page-header">
         <h1 className="page-title">Moje Zespoły (Projekty)</h1>
-        {/* Usunięto przycisk "Nowy projekt", ponieważ na tej stronie pokazujemy tylko przypisane projekty.
-            Jeśli chcesz, aby student mógł tworzyć projekty stąd, możesz go przywrócić i dostosować. */}
       </div>
 
-      {/* --- Panel filtrowania i sortowania, skopiowany z ProjektListPage --- */}
       <div className="filter-sort-panel">
         <div className="filter-group">
           <FaFilter className="icon" />
@@ -165,7 +155,6 @@ const TeamProjectsPage = () => {
           </button>
         </div>
       </div>
-      {/* --- Koniec panelu filtrowania i sortowania --- */}
 
       <div className="projekt-grid">
         {filteredAndSortedProjects.length === 0 ? (
@@ -184,8 +173,7 @@ const TeamProjectsPage = () => {
           ))
         )}
       </div>
-      {/* Link do wszystkich projektów jest chyba zbędny na stronie z Twoimi projektami, ale zostawiłem jeśli chcesz.
-      <Link to="/projekty" className="back-link">Wróć do wszystkich projektów</Link> */}
+      
     </div>
   );
 };

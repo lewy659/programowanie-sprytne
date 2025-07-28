@@ -1,6 +1,4 @@
-/* src/components/Login/Login.css */
 
-/* Definicja zmiennych dla łatwiejszego zarządzania motywem */
 :root {
   --primary-color: #007bff;
   --primary-hover-color: #0056b3;
@@ -14,7 +12,6 @@
   --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Ogólny kontener, teraz z gradientem */
 .login-wrapper {
   display: flex;
   justify-content: center;
@@ -25,7 +22,6 @@
   padding: 20px;
 }
 
-/* Ulepszony boks logowania */
 .login-container {
   background: var(--container-bg-color);
   padding: 40px;
@@ -45,7 +41,6 @@
   color: var(--text-color);
 }
 
-/* Komunikat błędu */
 .login-error {
   color: var(--error-color);
   background-color: rgba(211, 47, 47, 0.1);
@@ -57,14 +52,12 @@
   text-align: center;
 }
 
-/* Formularz */
 .login-form {
   display: flex;
   flex-direction: column;
   text-align: left;
 }
 
-/* Grupa input + label */
 .form-group {
   margin-bottom: 22px;
   position: relative;
@@ -96,7 +89,6 @@
   background-color: #fff;
 }
 
-/* Przycisk logowania */
 .login-button {
   padding: 15px;
   background-color: var(--primary-color);
@@ -117,7 +109,6 @@
   box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
 }
 
-/* NOWOŚĆ: Styl dla nieaktywnego przycisku */
 .login-button:disabled {
   background-color: #a0c3ff;
   cursor: not-allowed;

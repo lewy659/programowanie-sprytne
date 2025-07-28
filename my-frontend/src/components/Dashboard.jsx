@@ -1,4 +1,3 @@
-// src/components/Dashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../Auth/AuthContext'; 
 import { Link } from 'react-router-dom';
@@ -139,7 +138,6 @@ const Dashboard = () => {
         fetchUserDataForWelcome();
     }, [isLoggedIn]); 
 
-    // Renderowanie imienia i nazwiska - teraz odwołujemy się do 'imie' i 'nazwisko'
     const displayFullName = currentUserData && currentUserData.imie 
         ? `${currentUserData.imie} ${currentUserData.nazwisko || ''}`.trim() 
         : '';
@@ -153,7 +151,6 @@ const Dashboard = () => {
 		                   ) : errorUser ? (
 		                       `Witaj w systemie!` // Wyświetla ogólne powitanie, jeśli wystąpi błąd
 		                   ) : (
-		                       // Poniższa linia została zmieniona
 		                       `Witaj w systemie, ${displayFullName}!` 
 		                   )}
 		               </h1>
@@ -161,7 +158,6 @@ const Dashboard = () => {
 		           <p style={{fontSize: '1.1rem', color: '#555'}}>
 		               Wybierz opcję z menu po lewej stronie, aby rozpocząć pracę.
 		           </p>
-            {/* Sekcja z podsumowaniem projektów */}
             <div style={{ marginTop: '20px', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', backgroundColor: '#fff' }}>
                 <h2 style={{ margin: '0 0 10px 0', color: '#333' }}>Twoje Projekty</h2>
                 {isLoadingProjects ? (
@@ -176,7 +172,6 @@ const Dashboard = () => {
                
             </div>
 
-            {/* Sekcja: Ostatnio odwiedzone projekty */}
             <div style={{ marginTop: '20px', padding: '15px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)', backgroundColor: '#fff' }}>
                 <h2 style={{ margin: '0 0 10px 0', color: '#333' }}>Ostatnio Odwiedzone Projekty</h2>
                 {recentProjects.length > 0 ? (

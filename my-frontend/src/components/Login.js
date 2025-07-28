@@ -1,4 +1,3 @@
-// src/components/Login.jsx
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../Auth/AuthContext";
@@ -36,12 +35,10 @@ function Login() {
 
       const data = await response.json();
       
-      // Sprawdź, czy `data.studentId` istnieje w odpowiedzi z API
       if (data.token && data.studentId) {
-        authLogin(data.token, data.studentId); // <--- ZMIENIONA LINIA: Przekazujemy również studentId
+        authLogin(data.token, data.studentId); 
         navigate("/");
       } else {
-        // Jeśli API nie zwróci studentId, zgłoś błąd
         throw new Error("Brak tokena lub ID studenta w odpowiedzi logowania. Skontaktuj się z administratorem.");
       }
 

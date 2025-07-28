@@ -1,4 +1,3 @@
-// src/App.js
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./Auth/AuthContext";
 import ProtectedRoute from "./Auth/ProtectedRoute";
@@ -31,7 +30,6 @@ function App() {
             <Route path="/moje-zespoly" element={<TeamProjectsPage />} />
             {/* <-- NOWOŚĆ: Dodajemy trasę dla Czatu */}
             <Route path="/chat" element={<Chat />} />
-            {/* Tutaj możesz dodać więcej chronionych tras, np. /ustawienia, /profil itp. */}
           </Route>
         </Route>
 

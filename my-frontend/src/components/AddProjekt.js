@@ -1,7 +1,6 @@
-// src/components/AddProjekt.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./AddProjekt.css"; // Import CSS jest poprawny dla tej ścieżki
+import "./AddProjekt.css"; 
 
 function AddProjekt() {
   const [nazwa, setNazwa] = useState("");
@@ -41,7 +40,7 @@ function AddProjekt() {
       setNazwa("");
       setOpis("");
 
-      // KLUCZOWA ZMIANA: Przekazanie stanu do komponentu ProjektListPage
+      
       navigate("/projekty", { state: { refreshProjects: true } }); 
 
     } catch (error) {
@@ -76,7 +75,6 @@ function AddProjekt() {
         <button type="submit">Dodaj Projekt</button>
       </form>
 
-      {/* Używamy klas CSS do stylizacji komunikatów */}
       {success && <p className="success-message">✅ Projekt został dodany!</p>}
       {error && <p className="error-message">{error}</p>}
     </div>

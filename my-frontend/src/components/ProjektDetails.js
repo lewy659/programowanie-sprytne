@@ -45,6 +45,21 @@ function ProjektDetails() {
       setProjekt(data);
       setEditNazwa(data.nazwa);
       setEditOpis(data.opis || "");
+
+      const recentProject = {
+        id: data.projektId, 
+        name: data.nazwa,
+        timestamp: new Date().toISOString(), 
+      };
+
+      let storedRecentProjects = JSON.parse(localStorage.getItem('recentProjects') || '[]');
+
+      storedRecentProjects = storedRecentProjects.filter(p => p.id !== recentProject.id);
+
+      storedRecentProjects.unshift(recentProject);
+
+      localStorage.setItem('recentProjects', JSON.stringify(storedRecentProjects.slice(0, 10)));
+
     } catch (err) {
       toast.error(err.message);
       setProjekt(null);

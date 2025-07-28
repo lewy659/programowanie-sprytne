@@ -1,7 +1,6 @@
-// src/components/Register/Register.jsx
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "./Register.css"; // Importujemy nowe style
+import "./Register.css"; 
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +11,7 @@ const Register = () => {
   });
   const [error, setError] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); // Dodano stan ładowania
+  const [isLoading, setIsLoading] = useState(false); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -38,14 +37,12 @@ const Register = () => {
       });
 
       if (!response.ok) {
-        // Spróbuj odczytać wiadomość o błędzie z odpowiedzi serwera
         const errorData = await response.json().catch(() => null);
         const errorMessage = errorData?.message || "Rejestracja nie powiodła się. Spróbuj ponownie.";
         throw new Error(errorMessage);
       }
 
       setSuccessMsg("Rejestracja udana! Przekierowuję do logowania...");
-      // Użyj przekierowania z nawigacją dla linków, aby nie było problemów z re-renderowaniem AuthProvider
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {
       setError(err.message || "Wystąpił problem z połączeniem. Spróbuj ponownie później.");
